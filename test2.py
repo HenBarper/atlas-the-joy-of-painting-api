@@ -5,7 +5,7 @@ titles = []
 data = []
 
 # Open the CSV file
-with open('data/episode_dates', newline='') as csvfile:
+with open('data/episode_dates.txt', newline='') as csvfile:
     # Create a CSV reader object
     reader = csv.reader(csvfile)
     # Skip the header row
@@ -20,7 +20,7 @@ with open('data/episode_dates', newline='') as csvfile:
 # Split the data into lines
 # lines = data#.strip().split('\n')
 
-for line in data[1:]:
+for line in data[0:]:
     # Split each line by parentheses and extract the title (first part)
     title = line.split('(')[0].strip()
     # Remove the surrounding quotes from the title
@@ -29,5 +29,7 @@ for line in data[1:]:
     titles.append(title)
 
 # Print the list of titles
+counter = 1
 for title in titles:
-  print(title)
+  print(f'{counter}. {title}')
+  counter += 1
