@@ -1,4 +1,66 @@
 import csv
+import psycopg2
+
+# Establish a connection to your PostgreSQL database
+conn = psycopg2.connect(
+    dbname="mydb",
+    user="postgres",
+    password="p0$tGR3z",
+    host="127.0.0.1",  # localhost or 127.0.0.1
+    port="5432"
+)
+
+# Create a cursor object using the connection
+cur = conn.cursor()
+
+# Define the CREATE TABLE query
+create_table_query = '''
+CREATE TABLE "episodes" (
+  "episode_id" integer PRIMARY KEY,
+  "title" varchar,
+  "season" integer,
+  "episode" integer,
+  "colors" varchar,
+  "subjects" varchar,
+  "air_date" varchar,
+  "month" varchar,
+  "notes" varchar,
+  "image_src" varchar,
+  "youtube_src" varchar
+);
+
+CREATE TABLE "subjects" (
+  "subject_id" integer PRIMARY KEY,
+  "subject_name" varchar
+);
+
+CREATE TABLE "colors" (
+  "color_id" integer PRIMARY KEY,
+  "color_name" varchar
+);
+
+-- Join table
+CREATE TABLE "episode_subjects" (
+  "episode_id" integer,
+  "subject_id" integer,
+  PRIMARY KEY("episode_id", "subject_id")
+);
+ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("episode_id");
+ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("subject_id") REFERENCES "subjects" ("subject_id");
+
+-- Join Table
+CREATE TABLE "episode_colors" (
+  "episode_id" integer,
+  "color_id" integer,
+  PRIMARY KEY("episode_id", "color_id")
+);
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("episode_id");
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("color_id") REFERENCES "colors" ("color_id");
+
+'''
+
+# Execute the CREATE TABLE query
+cur.execute(create_table_query)
 
 # Initialize an empty list to store the titles
 titles = [] # Colors used -
@@ -63,7 +125,7 @@ with open('data/subject_matter.csv', newline='') as csvfile:
                 if row[i].strip() == '1':
                     # print('match!')
                     current_subjects.append(i - 1)
-        all_subjects.append('null-subject')
+        # all_subjects.append('null-subject')
         # subjects_used.append(current_subjects)
         subjects_used.append(','.join(map(str, current_subjects)))
 
@@ -113,16 +175,30 @@ with open('data/colors_used.csv', newline='') as csvfile:
         colors_used.append(','.join(map(str, current_colors)))
         image_srcs.append(image_src)
         youtube_srcs.append(youtube_src)
-        all_colors.append('null-colors')
+        # all_colors.append('null-colors')
         data.append(info)
 
-rows = zip(titles, seasons, episodes, ep_colors, colors_used, image_srcs, youtube_srcs, all_colors, all_subjects, air_dates, months, notes, subjects_used)
+for i in range(len(titles)):
+    cur.execute(
+        "INSERT INTO episodes (episode_id, title, season, episode, colors, subjects, air_date, month, notes, image_src, youtube_src) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+        (i + 1, titles[i], seasons[i], episodes[i], colors_used[i], subjects_used[i], air_dates[i], months[i], notes[i], image_srcs[i], youtube_srcs[i])
+    )
 
-# Specify the file name
-csv_file = 'output.csv'
+for i in range(len(all_colors)):
+    cur.execute(
+        "INSERT INTO colors (color_id, color_name) VALUES (%s, %s)",
+        (i + 1, all_colors[i])
+    )
 
-# Write rows to CSV file
-with open(csv_file, 'w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(['Title', 'Season', 'Episode Number', 'Colors', 'Color IDs', 'Image Links', 'Youtube Links', 'All Colors', 'Subject Matter', 'Air Dates', 'Months', 'Notes', 'Subjects'])  # Write header
-    writer.writerows(rows)  # Write rows
+for i in range(len(all_subjects)):
+    cur.execute(
+        "INSERT INTO subjects (subject_id, subject_name) VALUES (%s, %s)",
+        (i + 1, all_subjects[i])
+    )
+
+# Commit the transaction
+conn.commit()
+
+# Close the cursor and the connection
+cur.close()
+conn.close()

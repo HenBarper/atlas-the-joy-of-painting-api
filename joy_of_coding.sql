@@ -1,14 +1,11 @@
 CREATE TABLE "colors" (
   "color_id" integer PRIMARY KEY,
-  "name" varchar,
-  "hexcode" varchar,
-  "episode_id" integer
+  "color_name" varchar
 );
 
 CREATE TABLE "subjects" (
   "subject_id" integer PRIMARY KEY,
-  "subject" varchar,
-  "episode_id" integer
+  "subject_name" varchar
 );
 
 CREATE TABLE "episodes" (
@@ -16,7 +13,6 @@ CREATE TABLE "episodes" (
   "title" varchar,
   "season" integer,
   "episode" integer,
-  "num_colors" integer,
   "colors" varchar,
   "subjects" varchar,
   "air_date" varchar,
@@ -46,26 +42,4 @@ CREATE TABLE "episodes_subjects" (
 ALTER TABLE "episodes_subjects" ADD FOREIGN KEY ("episodes_subjects") REFERENCES "episodes" ("subjects");
 
 ALTER TABLE "episodes_subjects" ADD FOREIGN KEY ("subjects_subject_id") REFERENCES "subjects" ("subject_id");
-
-
-CREATE TABLE "subjects_episodes" (
-  "subjects_episode_id" integer,
-  "episodes_episode_id" integer,
-  PRIMARY KEY ("subjects_episode_id", "episodes_episode_id")
-);
-
-ALTER TABLE "subjects_episodes" ADD FOREIGN KEY ("subjects_episode_id") REFERENCES "subjects" ("episode_id");
-
-ALTER TABLE "subjects_episodes" ADD FOREIGN KEY ("episodes_episode_id") REFERENCES "episodes" ("episode_id");
-
-
-CREATE TABLE "colors_episodes" (
-  "colors_episode_id" integer,
-  "episodes_episode_id" integer,
-  PRIMARY KEY ("colors_episode_id", "episodes_episode_id")
-);
-
-ALTER TABLE "colors_episodes" ADD FOREIGN KEY ("colors_episode_id") REFERENCES "colors" ("episode_id");
-
-ALTER TABLE "colors_episodes" ADD FOREIGN KEY ("episodes_episode_id") REFERENCES "episodes" ("episode_id");
 
