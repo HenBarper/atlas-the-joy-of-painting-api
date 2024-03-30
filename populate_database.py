@@ -82,6 +82,7 @@ with open('data/colors_used.csv', newline='') as csvfile:
 
     # Extract the items from index 10 to 27 in the header row
     all_colors = header_row[10:28] # length 18
+    all_colors = [phrase.lower().replace('_', ' ').title() for phrase in all_colors]
 
     # Iterate over each row in the CSV file
     for row in reader:
