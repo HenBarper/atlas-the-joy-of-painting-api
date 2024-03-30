@@ -1,3 +1,19 @@
+import psycopg2
+
+# Establish a connection to your PostgreSQL database
+conn = psycopg2.connect(
+    dbname="mydb",
+    user="postgres",
+    password="p0$tGR3z",
+    host="127.0.0.1",  # localhost or 127.0.0.1
+    port="5432"
+)
+
+# Create a cursor object using the connection
+cur = conn.cursor()
+
+# Define the CREATE TABLE query
+create_table_query = '''
 CREATE TABLE "episodes" (
   "episode_id" integer PRIMARY KEY,
   "title" varchar,
@@ -39,3 +55,15 @@ CREATE TABLE "episode_colors" (
 );
 ALTER TABLE "episode_colors" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("episode_id");
 ALTER TABLE "episode_colors" ADD FOREIGN KEY ("color_id") REFERENCES "colors" ("color_id");
+
+'''
+
+# Execute the CREATE TABLE query
+cur.execute(create_table_query)
+
+# Commit the transaction
+conn.commit()
+
+# Close the cursor and the connection
+cur.close()
+conn.close()

@@ -1,13 +1,3 @@
-CREATE TABLE "colors" (
-  "color_id" integer PRIMARY KEY,
-  "color_name" varchar
-);
-
-CREATE TABLE "subjects" (
-  "subject_id" integer PRIMARY KEY,
-  "subject_name" varchar
-);
-
 CREATE TABLE "episodes" (
   "episode_id" integer PRIMARY KEY,
   "title" varchar,
@@ -16,30 +6,36 @@ CREATE TABLE "episodes" (
   "colors" varchar,
   "subjects" varchar,
   "air_date" varchar,
-  "month" integer,
+  "month" varchar,
   "notes" varchar,
   "image_src" varchar,
   "youtube_src" varchar
 );
 
-CREATE TABLE "episodes_colors" (
-  "episodes_colors" varchar,
-  "colors_color_id" integer,
-  PRIMARY KEY ("episodes_colors", "colors_color_id")
+CREATE TABLE "subjects" (
+  "subject_id" integer PRIMARY KEY,
+  "subject_name" varchar
 );
 
-ALTER TABLE "episodes_colors" ADD FOREIGN KEY ("episodes_colors") REFERENCES "episodes" ("colors");
-
-ALTER TABLE "episodes_colors" ADD FOREIGN KEY ("colors_color_id") REFERENCES "colors" ("color_id");
-
-
-CREATE TABLE "episodes_subjects" (
-  "episodes_subjects" varchar,
-  "subjects_subject_id" integer,
-  PRIMARY KEY ("episodes_subjects", "subjects_subject_id")
+CREATE TABLE "colors" (
+  "color_id" integer PRIMARY KEY,
+  "color_name" varchar
 );
 
-ALTER TABLE "episodes_subjects" ADD FOREIGN KEY ("episodes_subjects") REFERENCES "episodes" ("subjects");
+-- Join table
+CREATE TABLE "episode_subjects" (
+  "episode_id" integer,
+  "subject_id" integer,
+  PRIMARY KEY("episode_id", "subject_id")
+);
+ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("episode_id");
+ALTER TABLE "episode_subjects" ADD FOREIGN KEY ("subject_id") REFERENCES "subjects" ("subject_id");
 
-ALTER TABLE "episodes_subjects" ADD FOREIGN KEY ("subjects_subject_id") REFERENCES "subjects" ("subject_id");
-
+-- Join Table
+CREATE TABLE "episode_colors" (
+  "episode_id" integer,
+  "color_id" integer,
+  PRIMARY KEY("episode_id", "color_id")
+);
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("episode_id") REFERENCES "episodes" ("episode_id");
+ALTER TABLE "episode_colors" ADD FOREIGN KEY ("color_id") REFERENCES "colors" ("color_id");
