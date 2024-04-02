@@ -13,8 +13,8 @@ This projects reads the three files, extracts and transforms the data into a coh
 ## Sections
 <a name="Sections"></a>
 
-[Resources](#Resources)
-[Files](#Files)
+1. [Resources](#Resources)
+2. [Files](#Files)
 __________________________________________________________________________________________________________________________________________
 <a name="Resources"></a>
 
