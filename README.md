@@ -17,38 +17,6 @@ This projects reads the three files, extracts and transforms the data into a coh
 2. [Usage](#Usage)
 3. [Resources](#Resources)
 __________________________________________________________________________________________________________________________________________
-<a name="Resources"></a>
-
-## Resources
-
-#### UML diagram & database table creator
-[https://dbdiagram.io/d](https://dbdiagram.io/d)
-
-#### SQL Database app
-[PostgreSQL](https://www.postgresql.org/)
-
-[Back to top](#Sections)
-__________________________________________________________________________________________________________________________________________
-<a name="Usage"></a>
-
-## Usage
-
-1. To start the server on port 3000 run:
-  `node app.js`
-  in the terminal
-
-2. Open the browser with one of the following urls:
-- To Query all episodes: `http://localhost:3000/episodes`
-- To Query all colors: `http://localhost:3000/colors`
-- To Query all subjects: `http://localhost:3000/subjects`
-- To Query all episodes painting with a color: `http://localhost:3000/color_name/Bright-Red`
-- To Query all episodes painting a certain subject: `http://localhost:3000/subject_name/Circle-Frame`
-- To Query all episodes aired a certain month: `http://localhost:3000/month/January`
-
-
-
-[Back to top](#Sections)
-__________________________________________________________________________________________________________________________________________
 <a name="Files"></a>
 
 ## Files
@@ -77,5 +45,37 @@ ________________________________________________________________________________
 
 ##### sql_commands.py
 - Contains the sql commands used to query for data with the endpoints
+
+[Back to top](#Sections)
+__________________________________________________________________________________________________________________________________________
+<a name="Usage"></a>
+
+## Usage
+
+1. To start the server on port 3000 run:
+  `node app.js`
+  in the terminal
+
+2. Open the browser with one of the following urls:
+- To Query all episodes: `http://localhost:3000/episodes`
+- To Query all colors: `http://localhost:3000/colors`
+- To Query all subjects: `http://localhost:3000/subjects`
+- To Query all episodes painting with a color: `http://localhost:3000/color_name/Bright-Red`
+- To Query all episodes painting a certain subject: `http://localhost:3000/subject_name/Circle-Frame`
+- To Query all episodes aired a certain month: `http://localhost:3000/month/January`
+
+
+
+[Back to top](#Sections)
+__________________________________________________________________________________________________________________________________________
+<a name="Resources"></a>
+
+## Resources
+
+#### UML diagram & database table creator
+[https://dbdiagram.io/d](https://dbdiagram.io/d)
+
+#### SQL Database app
+[PostgreSQL](https://www.postgresql.org/)
 
 [Back to top](#Sections)
