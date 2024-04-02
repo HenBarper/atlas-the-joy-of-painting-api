@@ -12,6 +12,8 @@ const pool = new Pool({
   port: '5432', // default PostgreSQL port
 });
 
+// Routes -----------------------------------------------------------------------------------------------------------------------
+
 // ALL EPISODES ----------------------------------------------------------------------
 app.get('/episodes', async (req, res) => {
   try {
@@ -127,7 +129,6 @@ app.get('/subject_name/:subject_name', async (req, res) => {
       text: `SELECT * FROM episodes WHERE ',' || subjects || ',' LIKE '%,' || (SELECT subject_id::varchar FROM subjects WHERE subject_name = $1) || ',%';`,
       values: [subject_name],
     };
-    console.log(query);
     // Execute the query
     const result = await pool.query(query);
 
@@ -137,9 +138,29 @@ app.get('/subject_name/:subject_name', async (req, res) => {
     console.error('Error executing query', error);
     res.status(500).json({ message: 'Internal Server Error' });
   }
-  console.log('end');
 });
 
+// All episdes by Month ---------------------------------------------------------
+app.get('/month/:month_name', async (req, res) => {
+  const month_name = req.params.month_name;
+  try {
+    // Execute a query to fetch data from the database
+    const query = {
+      text: `SELECT * FROM episodes WHERE month = $1;`,
+      values: [month_name],
+    };
+    // Execute the query
+    const result = await pool.query(query);
+
+    // Send the response
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// End of routes -----------------------------------------------------------------------------------------------------
 
 app.listen(PORT, (error) =>{ 
   if(!error) 
