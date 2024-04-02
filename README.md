@@ -76,6 +76,6 @@ ________________________________________________________________________________
 [https://dbdiagram.io/d](https://dbdiagram.io/d)
 
 #### SQL Database app
-[PostgreSQL](https://www.postgresql.org/)
+[https://www.postgresql.org/](https://www.postgresql.org/)
 
 [Back to top](#Sections)
