@@ -32,7 +32,7 @@ all_colors = [] # Colors used
 all_subjects = [] # Subject matter
 
 # Open the CSV files
-with open('data/episode_dates.txt', 'r') as file:
+with open('data_files/episode_dates.txt', 'r') as file:
     # Read each line in the file
     for line in file:
         line = line.strip()  # Remove leading and trailing whitespace, including '\n'
@@ -55,7 +55,7 @@ with open('data/episode_dates.txt', 'r') as file:
             months.append(month)
             notes.append(note)
 
-with open('data/subject_matter.csv', newline='') as csvfile:
+with open('data_files/subject_matter.csv', newline='') as csvfile:
     # Create a CSV reader object
     reader = csv.reader(csvfile)
 
@@ -73,7 +73,7 @@ with open('data/subject_matter.csv', newline='') as csvfile:
                     current_subjects.append(i - 1)
         subjects_used.append(','.join(map(str, current_subjects)))
 
-with open('data/colors_used.csv', newline='') as csvfile:
+with open('data_files/colors_used.csv', newline='') as csvfile:
     # Create a CSV reader object
     reader = csv.reader(csvfile)
 
