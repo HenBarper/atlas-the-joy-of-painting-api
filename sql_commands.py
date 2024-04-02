@@ -22,7 +22,7 @@ episodes_by_color_name_query = (
   SELECT *
   FROM episodes
   WHERE ',' || colors || ',' LIKE '%,' || 
-      (SELECT color_id::varchar FROM colors WHERE color_name = 'Black Gesso') || ',%';
+      (SELECT color_id::varchar FROM colors WHERE color_name = 'Alizarin-Crimson') || ',%';
   '''
 )
 # All episodes with subject_id 2

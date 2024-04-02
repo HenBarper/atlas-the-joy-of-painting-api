@@ -64,7 +64,7 @@ with open('data/subject_matter.csv', newline='') as csvfile:
 
     # Extract the items from index 2 to 67 in the header row
     all_subjects = header_row[2:67]
-    all_subjects = [phrase.lower().replace('_', ' ').title() for phrase in all_subjects]
+    all_subjects = [phrase.lower().replace('_', '-').title() for phrase in all_subjects]
     for row in reader:
         current_subjects = []
         if len(row) <= 69:
@@ -82,7 +82,7 @@ with open('data/colors_used.csv', newline='') as csvfile:
 
     # Extract the items from index 10 to 27 in the header row
     all_colors = header_row[10:28] # length 18
-    all_colors = [phrase.lower().replace('_', ' ').title() for phrase in all_colors]
+    all_colors = [phrase.lower().replace('_', '-').title() for phrase in all_colors]
 
     # Iterate over each row in the CSV file
     for row in reader:
