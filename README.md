@@ -7,7 +7,7 @@ We were given three files containing data about episodes of Bob Ross' "The Joy o
 This projects reads the three files, extracts and transforms the data into a cohesive dataset, loads it into a postgres database, and creates an express server with endpoints to query the database for episodes based on color pallette, subject matter, or month of original television air date.
 
 ## Database Structure
-![UML_Diagram](UML_Diagram.png)
+![UML_Diagram](/UML_Diagram.png)
 
 ## Sections
 <a name="Sections"></a>
