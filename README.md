@@ -8,7 +8,7 @@ This projects reads the three files, extracts and transforms the data into a coh
 
 ## Database Structure
 
-![UML Diagram pic](./UML_Diagram.png)
+![UML Diagram pic](UML_diagram.png)
 
 ## Sections
 <a name="Sections"></a>
