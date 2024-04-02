@@ -23,18 +23,21 @@ ________________________________________________________________________________
 #### UML diagram & database table creator
 [https://dbdiagram.io/d](https://dbdiagram.io/d)
 
+#### SQL Database app
+[PostgreSQL](https://www.postgresql.org/)
+
 [Back to top](#Sections)
 __________________________________________________________________________________________________________________________________________
 <a name="Files"></a>
 
 ## Files
 
-### Server
+### - Server -
 #### app.js
 - Creates the express server
 - Defines the routes for retrieving data from the API
 
-### Data Cleaning
+### - Data Cleaning -
 #### python_clean.py
 - Reads data/colors_used.csv, data/subject_matter.csv, & episode_datas.txt, cleans and matches the data and puts it into a new files: clean_data.csv for reference
 
@@ -46,5 +49,12 @@ ________________________________________________________________________________
 
 #### delete_tables.py
 - Deletes all the tables of the database for testing purposes
+
+### - SQL -
+#### Joy_of_Coding.sql
+- Contains the sql commands used to create my data tables
+
+#### sql_commands.py
+- Contains the sql commands used to query for data with the endpoints
 
 [Back to top](#Sections)
