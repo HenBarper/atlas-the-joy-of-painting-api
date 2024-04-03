@@ -1,6 +1,7 @@
 # Atlas School - The Joy of Painting API
 
 ![winter sun](https://www.twoinchbrush.com/images/painting270.png)
+Winter Sun by Bob Ross
 
 In this project we explore the idea of ETL (Extract, Transform, Load), which is the process of taking data from multiple unique sources, modifying them in some way, and then storing them in a centralized database. 
 
