@@ -1,5 +1,7 @@
 # Atlas School - The Joy of Painting API
 
+![winter sun](https://www.twoinchbrush.com/images/painting270.png)
+
 In this project we explore the idea of ETL (Extract, Transform, Load), which is the process of taking data from multiple unique sources, modifying them in some way, and then storing them in a centralized database. 
 
 We were given three files containing data about episodes of Bob Ross' "The Joy of Painting". All three files contained different information and were formatted differently.
