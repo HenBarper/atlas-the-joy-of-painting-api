@@ -19,6 +19,7 @@ This projects reads the three files, extracts and transforms the data into a coh
 1. [Files](#Files)
 2. [Usage](#Usage)
 3. [Resources](#Resources)
+
 __________________________________________________________________________________________________________________________________________
 <a name="Files"></a>
 
