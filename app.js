@@ -309,38 +309,38 @@ app.listen(PORT, (error) =>{
 // DEPRECATED
 
 // ALL EPISODES ----------------------------------------------------------------------
-app.get('/episodes', async (req, res) => {
-  try {
-    // Execute a query to fetch data from the database
-    const queryResult = await pool.query('SELECT * FROM episodes')
+// app.get('/episodes', async (req, res) => {
+//   try {
+//     // Execute a query to fetch data from the database
+//     const queryResult = await pool.query('SELECT * FROM episodes')
 
-    // Send the fetched data as the response
-    res.json(queryResult.rows);
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-});
+//     // Send the fetched data as the response
+//     res.json(queryResult.rows);
+//   } catch (error) {
+//     console.error('Error executing query', error);
+//     res.status(500).json({ message: 'Internal Server Error' });
+//   }
+// });
 
 // All episodes by color name
-app.get('/color_name/:color_name', async (req, res) => {
-  const color_name = req.params.color_name;
-  try {
-    // Execute a query to fetch data from the database
-    const query = {
-      text: `SELECT * FROM episodes WHERE ',' || colors || ',' LIKE '%,' || (SELECT color_id::varchar FROM colors WHERE color_name = $1) || ',%';`,
-      values: [color_name],
-    };
-    // Execute the query
-    const result = await pool.query(query);
+// app.get('/color_name/:color_name', async (req, res) => {
+//   const color_name = req.params.color_name;
+//   try {
+//     // Execute a query to fetch data from the database
+//     const query = {
+//       text: `SELECT * FROM episodes WHERE ',' || colors || ',' LIKE '%,' || (SELECT color_id::varchar FROM colors WHERE color_name = $1) || ',%';`,
+//       values: [color_name],
+//     };
+//     // Execute the query
+//     const result = await pool.query(query);
 
-    // Send the response
-    res.json(result.rows);
-  } catch (error) {
-    console.error('Error executing query', error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-});
+//     // Send the response
+//     res.json(result.rows);
+//   } catch (error) {
+//     console.error('Error executing query', error);
+//     res.status(500).json({ message: 'Internal Server Error' });
+//   }
+// });
 
 // All episdes with subject-name ---------------------------------------------------------
 // app.get('/subject_name/:subject_name', async (req, res) => {
