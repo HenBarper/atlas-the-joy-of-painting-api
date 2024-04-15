@@ -103,5 +103,6 @@ ________________________________________________________________________________
 <a name="Credits"></a>
 ### Contributor: Ben Harper
 Website: [BenHarperWebDev](https://henbarper.github.io/benharperwebdev/)
+LinkedIn: [linkedin.com/in/ben-harper-webdev](https://www.linkedin.com/in/ben-harper-webdev/)
 
 [Back to top](#Sections)
