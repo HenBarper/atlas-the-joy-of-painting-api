@@ -30,6 +30,12 @@ ________________________________________________________________________________
 - Creates the express server
 - Defines the routes for retrieving data from the API
 
+### - Front End -
+##### index.html
+- Defines the home page with links to follow for type of API query
+##### paintings.html
+- A blank html page to be filled in with information from API queries
+
 ### - Data Cleaning -
 ##### python_clean.py
 - Reads data/colors_used.csv, data/subject_matter.csv, & episode_datas.txt, cleans and matches the data and puts it into a new files: clean_data.csv for reference
@@ -56,17 +62,27 @@ ________________________________________________________________________________
 
 ## Usage
 
-1. To start the server on port 3000 run:
+1. Set up your postgresql database with the follwing
+- dbname="mydb"
+- user="postgres"
+- password="password"
+- host="127.0.0.1",  # localhost or 127.0.0.1
+- port="5432"
+
+2. Run
+- `python3 data_cleaning/create_database.py`
+- `python3 data_cleaning/populate_database.py`
+
+3. To start the server on port 3000 run:
   `node app.js`
   in the terminal
 
-2. Open the browser with one of the following urls:
-- To Query all episodes: `http://localhost:3000/episodes`
-- To Query all colors: `http://localhost:3000/colors`
-- To Query all subjects: `http://localhost:3000/subjects`
-- To Query all episodes painting with a color: `http://localhost:3000/color_name/Bright-Red`
-- To Query all episodes painting a certain subject: `http://localhost:3000/subject_name/Circle-Frame`
-- To Query all episodes aired a certain month: `http://localhost:3000/month/January`
+4. Open the browser on `http://localhost:3000` and click the link to the appropriate query
+- You can also query with individual endpoints
+  - `http://localhost:3000/episodes` for all episodes
+  - `http://localhost:3000/month/January` for episodes by month aired
+  - `http://localhost:3000/color_name/Alizarin-Crimson` for episodes by color
+  - `http://localhost:3000/subject_name/Cliff` for episodes by subject matter
 
 
 
@@ -81,5 +97,11 @@ ________________________________________________________________________________
 
 #### SQL Database app
 [https://www.postgresql.org/](https://www.postgresql.org/)
+
+[Back to top](#Sections)
+__________________________________________________________________________________________________________________________________________
+<a name="Credits"></a>
+### Contributor: Ben Harper
+Website: [BenHarperWebDev](https://henbarper.github.io/benharperwebdev/)
 
 [Back to top](#Sections)
